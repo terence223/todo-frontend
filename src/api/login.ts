@@ -14,3 +14,11 @@ export const signupApi = async (data: User) => {
   );
   return response;
 };
+
+export const signinApi = async (data: Pick<User, 'email' | 'password'>) => {
+  const { data: response } = await axios.post(
+    `${config.apiDomain}/login`,
+    data
+  );
+  return response;
+};
