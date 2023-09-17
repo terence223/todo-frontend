@@ -55,7 +55,7 @@ const Signin = () => {
         message: 'Success',
         description: 'Login successfully',
       });
-      navigate('/');
+      navigate('/todo-frontend/');
     },
     onError: () => {
       notification.open({
@@ -104,7 +104,9 @@ const Signin = () => {
             Login
           </Button>
         </Card>
-        <SignupLink onClick={() => navigate('/signup')}>Signup here</SignupLink>
+        <SignupLink onClick={() => navigate('/todo-frontend/signup')}>
+          Signup here
+        </SignupLink>
       </div>
     </Container>
   );

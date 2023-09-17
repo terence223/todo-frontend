@@ -1,19 +1,19 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Todolist from './pages/Todolist';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 
+const router = createBrowserRouter([
+  { path: '/todo-frontend/signin', element: <Signin /> },
+  { path: '/todo-frontend/signup', element: <Signup /> },
+  { path: '/todo-frontend/', element: <Todolist /> },
+]);
+
 const App = () => {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/todo-frontend/signin" element={<Signin />} />
-          <Route path="/todo-frontend/signup" element={<Signup />} />
-          <Route path="*" element={<Todolist />} />
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </>
   );
 };

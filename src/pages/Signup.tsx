@@ -63,7 +63,7 @@ const Signup = () => {
         message: 'Success',
         description: 'Signup successfully',
       });
-      navigate('/signin');
+      navigate('/todo-frontend/signin');
     },
     onError: () => {
       notification.open({
