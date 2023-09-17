@@ -28,8 +28,11 @@ const SubTitle = styled.h4`
 `;
 
 const Container = styled.div`
+  margin: 0;
+  padding: 0;
   display: flex;
   place-items: center;
+  min-height: 100vh;
 `;
 
 const FormArea = styled.div`

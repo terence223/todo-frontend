@@ -21,6 +21,7 @@ const { Search } = Input;
 
 const Container = styled.div`
   width: 400px;
+  margin-top: 60px;
 `;
 
 const TodoCard = styled(Card)`

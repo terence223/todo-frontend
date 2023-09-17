@@ -11,8 +11,11 @@ import { signinApi } from '../api/login';
 import { useMutation } from 'react-query';
 
 const Container = styled.div`
+  margin: 0;
+  padding: 0;
   display: flex;
   place-items: center;
+  min-height: 100vh;
 `;
 
 const MainTitle = styled.h2`
