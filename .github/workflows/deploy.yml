@@ -1,4 +1,3 @@
-// @ts-nocheck
 name: Deploy
 
 on:
