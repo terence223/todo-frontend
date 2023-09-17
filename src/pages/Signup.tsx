@@ -27,6 +27,11 @@ const SubTitle = styled.h4`
   font-weight: normal;
 `;
 
+const Container = styled.div`
+  display: flex;
+  place-items: center;
+`;
+
 const FormArea = styled.div`
   min-height: 180px;
   margin-top: 40px;
@@ -88,7 +93,7 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <Container>
       <Card style={{ width: 400 }}>
         <MainTitle>Simple Todolist</MainTitle>
         <SubTitle>Please signup here</SubTitle>
@@ -135,7 +140,7 @@ const Signup = () => {
           Signup
         </Button>
       </Card>
-    </div>
+    </Container>
   );
 };
 
