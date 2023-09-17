@@ -2,8 +2,18 @@ import { useState } from 'react';
 import { Input, Card, notification, Button, Tooltip } from 'antd';
 import styled from 'styled-components';
 import { useMutation, useQuery } from 'react-query';
-import { ExclamationCircleOutlined, DeleteOutlined } from '@ant-design/icons';
-import { todoCreateApi, todoFetchApi, todoDeleteApi, Todo } from '../api/todo';
+import {
+  ExclamationCircleOutlined,
+  DeleteOutlined,
+  CheckOutlined,
+} from '@ant-design/icons';
+import {
+  todoCreateApi,
+  todoUpdateApi,
+  todoFetchApi,
+  todoDeleteApi,
+  Todo,
+} from '../api/todo';
 
 const { Search } = Input;
 
@@ -22,6 +32,11 @@ const TodoContainer = styled.div`
   align-items: center;
 `;
 
+const CheckButton = styled(Button)`
+  margin-right: 10px;
+  cursor: default;
+`;
+
 const Todolist = () => {
   const [todo, setTodo] = useState<string>('');
 
@@ -31,6 +46,18 @@ const Todolist = () => {
     onSuccess: () => {
       refetch();
       setTodo('');
+    },
+    onError: () => {
+      notification.open({
+        message: 'Error',
+        icon: <ExclamationCircleOutlined style={{ color: '#ff4d4f' }} />,
+      });
+    },
+  });
+
+  const { mutate: updateMutate } = useMutation(todoUpdateApi, {
+    onSuccess: () => {
+      refetch();
     },
     onError: () => {
       notification.open({
@@ -75,10 +102,20 @@ const Todolist = () => {
       />
       {Array.isArray(data?.todos) &&
         data.todos.map((todo: Todo) => (
-          <TodoCard hoverable={true}>
+          <TodoCard
+            hoverable={true}
+            onClick={() => {
+              updateMutate({ ...todo, checked: !todo.checked });
+            }}
+          >
             <TodoContainer>
               <div>{todo.title}</div>
               <div>
+                <CheckButton
+                  shape="circle"
+                  type={todo.checked ? 'primary' : 'default'}
+                  icon={<CheckOutlined />}
+                />
                 <Tooltip title="Delete">
                   <Button
                     shape="circle"

@@ -27,6 +27,15 @@ export const todoCreateApi = async (data: Pick<Todo, 'title'>) => {
   return response;
 };
 
+export const todoUpdateApi = async (data: Todo) => {
+  const { data: response } = await axios.put(
+    `${config.apiDomain}/todo/${data._id}`,
+    data,
+    { headers: { Authorization: `Bearer ${fetchJWTToken()}` } }
+  );
+  return response;
+};
+
 export const todoDeleteApi = async (id: string) => {
   const { data: response } = await axios.delete(
     `${config.apiDomain}/todo/${id}`,
