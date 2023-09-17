@@ -1,6 +1,6 @@
 {
   "name": "todo-frontend",
-  "homepage": "https://terence223.github.io/todo-frontend/"
+  "homepage": "https://terence223.github.io/todo-frontend/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
