@@ -1,12 +1,20 @@
 import { useState } from 'react';
-import { Card, Input, Button } from 'antd';
-import { UserOutlined, InboxOutlined, UnlockOutlined } from '@ant-design/icons';
+import { Card, Input, Button, notification } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import {
+  UserOutlined,
+  InboxOutlined,
+  UnlockOutlined,
+  ExclamationCircleOutlined,
+} from '@ant-design/icons';
 import styled from 'styled-components';
 import {
   validateEmail,
   validatePassword,
   validateUser,
 } from '../utils/validator';
+import { signupApi } from '../api/login';
+import { useMutation } from 'react-query';
 
 const MainTitle = styled.h2`
   font-size: 30px;
@@ -36,6 +44,7 @@ const ErrMsgWrapper = styled.div`
 `;
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [user, setUser] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -43,10 +52,39 @@ const Signup = () => {
   const [userErr, setUserErr] = useState<string>('');
   const [passwordErr, setPasswordErr] = useState<string>('');
 
+  const { mutate, isLoading } = useMutation(signupApi, {
+    onSuccess: () => {
+      notification.open({
+        message: 'Success',
+        description: 'Signup successfully',
+      });
+      navigate('/signin');
+    },
+    onError: () => {
+      notification.open({
+        message: 'Error',
+        description: 'System error or Email already exists!',
+        icon: <ExclamationCircleOutlined style={{ color: '#ff4d4f' }} />,
+      });
+    },
+  });
+
   const onSignup = () => {
-    setEmailErr(validateEmail(email));
-    setUserErr(validateUser(user));
-    setPasswordErr(validatePassword(password));
+    const emailErrMsg = validateEmail(email);
+    const userErrMsg = validateUser(user);
+    const passwordErrMsg = validatePassword(password);
+
+    setEmailErr(emailErrMsg);
+    setUserErr(userErrMsg);
+    setPasswordErr(passwordErrMsg);
+
+    if (!emailErrMsg && !userErrMsg && !passwordErrMsg) {
+      mutate({
+        email,
+        name: user,
+        password,
+      });
+    }
   };
 
   return (
@@ -87,7 +125,13 @@ const Signup = () => {
             <ErrMsgWrapper>{passwordErr}</ErrMsgWrapper>
           </div>
         </FormArea>
-        <Button type="primary" shape="round" size="large" onClick={onSignup}>
+        <Button
+          type="primary"
+          shape="round"
+          size="large"
+          onClick={onSignup}
+          loading={isLoading}
+        >
           Signup
         </Button>
       </Card>
