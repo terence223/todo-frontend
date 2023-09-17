@@ -52,9 +52,12 @@ const Todolist = () => {
     },
   });
 
+  const userName = localStorage.getItem('UserName');
+  const welcomeWord = userName ? `Hello, ${userName}! ` : 'Hello! ';
+
   return (
     <Container>
-      <h2>Enjoy using Todolist!</h2>
+      <h2>{`${welcomeWord}Enjoy using Todolist!`}</h2>
       <Search
         placeholder="Add New Todo Here...."
         enterButton="Add"

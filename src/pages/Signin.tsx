@@ -51,6 +51,7 @@ const Signin = () => {
   const { mutate, isLoading } = useMutation(signinApi, {
     onSuccess: data => {
       localStorage.setItem('JWTtoken', data.token);
+      localStorage.setItem('UserName', data.user);
       notification.open({
         message: 'Success',
         description: 'Login successfully',
