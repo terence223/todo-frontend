@@ -30,6 +30,7 @@ const Todolist = () => {
   const { mutate: createMutate, isLoading } = useMutation(todoCreateApi, {
     onSuccess: () => {
       refetch();
+      setTodo('');
     },
     onError: () => {
       notification.open({
