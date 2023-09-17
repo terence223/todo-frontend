@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import { Input, Card, notification, Button, Tooltip } from 'antd';
+import { Input, Card, notification, Button, Tooltip, FloatButton } from 'antd';
 import styled from 'styled-components';
 import { useMutation, useQuery } from 'react-query';
 import {
   ExclamationCircleOutlined,
   DeleteOutlined,
   CheckOutlined,
+  LogoutOutlined,
 } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 import {
   todoCreateApi,
   todoUpdateApi,
@@ -41,6 +43,8 @@ const Todolist = () => {
   const [todo, setTodo] = useState<string>('');
 
   const { data, refetch } = useQuery('TodoListAPI', todoFetchApi);
+
+  const navigate = useNavigate();
 
   const { mutate: createMutate, isLoading } = useMutation(todoCreateApi, {
     onSuccess: () => {
@@ -132,6 +136,15 @@ const Todolist = () => {
             </TodoContainer>
           </TodoCard>
         ))}
+      <Tooltip title="Logout">
+        <FloatButton
+          icon={<LogoutOutlined />}
+          onClick={() => {
+            localStorage.removeItem('JWTtoken');
+            navigate('/todo-frontend/signin');
+          }}
+        />
+      </Tooltip>
     </Container>
   );
 };
