@@ -125,7 +125,8 @@ const Todolist = () => {
                     shape="circle"
                     icon={
                       <DeleteOutlined
-                        onClick={() => {
+                        onClick={e => {
+                          e.stopPropagation();
                           deleteMutate(todo._id);
                         }}
                       />
