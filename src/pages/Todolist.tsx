@@ -81,7 +81,7 @@ const Todolist = () => {
                     icon={
                       <DeleteOutlined
                         onClick={() => {
-                          deleteMutate({ id: todo._id });
+                          deleteMutate(todo._id);
                         }}
                       />
                     }
