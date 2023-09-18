@@ -15,6 +15,7 @@ import {
 } from '../utils/validator';
 import { signupApi } from '../api/login';
 import { useMutation } from 'react-query';
+import config from '../config';
 
 const MainTitle = styled.h2`
   font-size: 30px;
@@ -66,7 +67,7 @@ const Signup = () => {
         message: 'Success',
         description: 'Signup successfully',
       });
-      navigate('/todo-frontend/signin');
+      navigate(`${config.baseUrl / signin}`);
     },
     onError: () => {
       notification.open({
