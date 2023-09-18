@@ -109,6 +109,7 @@ const Todolist = () => {
       {Array.isArray(data?.todos) &&
         data.todos.map((todo: Todo) => (
           <TodoCard
+            key={todo._id}
             hoverable={true}
             onClick={() => {
               updateMutate({ ...todo, checked: !todo.checked });
