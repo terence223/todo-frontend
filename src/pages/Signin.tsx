@@ -9,6 +9,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { signinApi } from '../api/login';
 import { useMutation } from 'react-query';
+import config from '../config';
 
 const Container = styled.div`
   margin: 0;
@@ -59,7 +60,7 @@ const Signin = () => {
         message: 'Success',
         description: 'Login successfully',
       });
-      navigate('/todo-frontend/');
+      navigate(`${config.baseUrl}/`);
     },
     onError: () => {
       notification.open({
@@ -108,7 +109,7 @@ const Signin = () => {
             Login
           </Button>
         </Card>
-        <SignupLink onClick={() => navigate('/todo-frontend/signup')}>
+        <SignupLink onClick={() => navigate(`${config.baseUrl}/signup`)}>
           Signup here
         </SignupLink>
       </div>

@@ -16,6 +16,7 @@ import {
   todoDeleteApi,
   Todo,
 } from '../api/todo';
+import config from '../config';
 
 const { Search } = Input;
 
@@ -143,7 +144,7 @@ const Todolist = () => {
           icon={<LogoutOutlined />}
           onClick={() => {
             localStorage.removeItem('JWTtoken');
-            navigate('/todo-frontend/signin');
+            navigate(`${config.baseUrl}/signin`);
           }}
         />
       </Tooltip>

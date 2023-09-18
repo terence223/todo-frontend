@@ -4,12 +4,13 @@ import Todolist from './pages/Todolist';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import AuthRoute from './AuthRoute';
+import config from './config';
 
 const router = createBrowserRouter([
-  { path: '/todo-frontend/signin', element: <Signin /> },
-  { path: '/todo-frontend/signup', element: <Signup /> },
+  { path: `${config.baseUrl}/signin`, element: <Signin /> },
+  { path: `${config.baseUrl}/signup`, element: <Signup /> },
   {
-    path: '/todo-frontend/',
+    path: `${config.baseUrl}`,
     element: (
       <AuthRoute>
         <Todolist />
