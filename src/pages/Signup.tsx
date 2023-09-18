@@ -67,7 +67,7 @@ const Signup = () => {
         message: 'Success',
         description: 'Signup successfully',
       });
-      navigate(`${config.baseUrl / signin}`);
+      navigate(`${config.baseUrl}/signin`);
     },
     onError: () => {
       notification.open({
