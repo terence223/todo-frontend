@@ -15,3 +15,7 @@ install all necessary plugins
 ### `npm run dev`
 
 run Vite React webpage.
+
+### `npm run e2etest`
+
+run e2e test by Cypress
