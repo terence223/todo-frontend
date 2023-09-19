@@ -92,6 +92,7 @@ const Todolist = () => {
     <Container>
       <h2>{`${welcomeWord}Enjoy using Todolist!`}</h2>
       <Search
+        className="todo-input"
         placeholder="Add New Todo Here...."
         enterButton="Add"
         size="large"
@@ -109,6 +110,7 @@ const Todolist = () => {
       {Array.isArray(data?.todos) &&
         data.todos.map((todo: Todo) => (
           <TodoCard
+            className="todo-card"
             key={todo._id}
             hoverable={true}
             onClick={() => {
@@ -116,15 +118,17 @@ const Todolist = () => {
             }}
           >
             <TodoContainer>
-              <div>{todo.title}</div>
+              <div className="todo-card-content">{todo.title}</div>
               <div>
                 <CheckButton
                   shape="circle"
                   type={todo.checked ? 'primary' : 'default'}
                   icon={<CheckOutlined />}
+                  className={todo.checked ? 'checked' : 'unchecked'}
                 />
                 <Tooltip title="Delete">
                   <Button
+                    className="todo-card-delete-button"
                     shape="circle"
                     icon={
                       <DeleteOutlined

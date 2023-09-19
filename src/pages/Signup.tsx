@@ -104,6 +104,7 @@ const Signup = () => {
         <FormArea>
           <div>
             <Input
+              className="signup-mail-input"
               placeholder="Enter your email"
               prefix={<InboxOutlined className="site-form-item-icon" />}
               value={email}
@@ -114,6 +115,7 @@ const Signup = () => {
           </div>
           <div>
             <Input
+              className="signup-name-input"
               placeholder="Enter your username"
               prefix={<UserOutlined className="site-form-item-icon" />}
               value={user}
@@ -124,6 +126,7 @@ const Signup = () => {
           </div>
           <div>
             <Input
+              className="signup-password-input"
               type="password"
               placeholder="Enter your password, at least 8 characters"
               prefix={<UnlockOutlined className="site-form-item-icon" />}
@@ -135,6 +138,7 @@ const Signup = () => {
           </div>
         </FormArea>
         <Button
+          className="signup-button"
           type="primary"
           shape="round"
           size="large"

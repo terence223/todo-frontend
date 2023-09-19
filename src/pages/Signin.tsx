@@ -86,12 +86,14 @@ const Signin = () => {
           <SubTitle>Please login here</SubTitle>
           <FormArea>
             <Input
+              className="signin-mail-input"
               placeholder="Enter your email"
               prefix={<InboxOutlined className="site-form-item-icon" />}
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
             <Input
+              className="signin-password-input"
               type="password"
               placeholder="Enter your password"
               prefix={<UnlockOutlined className="site-form-item-icon" />}
@@ -100,6 +102,7 @@ const Signin = () => {
             />
           </FormArea>
           <Button
+            className="signin-button"
             type="primary"
             shape="round"
             size="large"
